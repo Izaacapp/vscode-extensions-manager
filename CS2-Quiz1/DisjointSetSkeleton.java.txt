@@ -1,0 +1,99 @@
+import java.util.*;
+
+public class Main {
+
+	// A little driver program to test our class.
+	public static void main(String[] args) {
+
+		Scanner stdin = new Scanner(System.in);
+
+		System.out.println("How many items do you want in your Disjoint Set?");
+		int n = stdin.nextInt();
+
+		Main mySet = new Main(n); //make the sets
+
+		// Keep on going till the user wants to quit.
+		while (true) {
+
+			System.out.println("Do you want to quit(1=yes, 0=no)?");
+			int ans = stdin.nextInt();
+			if (ans == 1) break;
+
+			// Get the two items to union.
+			System.out.println("Which two items do you want to bring together, 0 through "+(n-1)+"?");
+			int item1 = stdin.nextInt();
+			int item2 = stdin.nextInt();
+
+			// See if it worked!
+			boolean result = mySet.union(item1, item2);
+
+			if (!result) {
+				System.out.println("Sorry, those were already together!");
+			}
+			else {
+				System.out.println("The union was successful, here is the new parent list: "+mySet);
+			}
+		}
+	}
+
+	private pair[] parents;
+
+	// Create the initial state of a disjoint set of n elements, 0 to n-1.
+	public Main(int n) {
+    
+   
+
+	}
+
+	// Returns the root node of the tree storing id.
+	public int find(int id) {
+
+      
+
+	}
+
+	public boolean union(int id1, int id2) {
+
+    
+
+	}
+
+	// Just represents this object as a list of each node's parent.
+	public String toString() {
+
+		String ans = "";
+		for (int i=0; i<parents.length; i++)
+    if(i == parents[i].getID())
+      	ans = ans + "(" + i + ", " + parents[i].getID() + ": " + parents[i].getHeight()+ ") ";
+    else
+			ans = ans + "(" + i + ", " + parents[i].getID() + ") ";
+		return ans;
+	}
+}
+
+class pair {
+
+	private int ID; 
+	private int height;
+
+	public pair(int myNum, int myHeight) {
+		ID = myNum;
+		height = myHeight;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public void incHeight() {
+		height++;
+	}
+
+	public void setID(int newID) {
+		ID = newID;
+	}
+}
